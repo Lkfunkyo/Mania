@@ -6,29 +6,30 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mania.game.Screens.PlayScreen;
+import com.mania.game.Screens.SplashScreen;
 
 public class Mania extends Game {
 	public static final int WIDTH = 480;
 	public static final int HEIGHT = 800;
 
-	SpriteBatch batch;
-	Texture img;
+	public Texture img;
+	public SpriteBatch batch;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
+
+		setScreen(new SplashScreen(this));
 	}
 
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
+	public Mania() {
+		super();
+	}
 
-		batch.draw(img, 0, 0);
-
-		batch.end();
+	public void render(){
+		super.render();
 	}
 	
 	@Override
