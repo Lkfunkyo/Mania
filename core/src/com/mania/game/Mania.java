@@ -19,8 +19,7 @@ public class Mania extends Game {
 		assets = new Assets();
 		batch = new SpriteBatch();
 		cam = new OrthographicCamera();
-
-		setScreen(new SplashScreen(this));
+		
 		setScreen(new SplashScreen(this));
 	}
 	
