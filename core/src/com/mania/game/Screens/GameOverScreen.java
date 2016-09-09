@@ -1,6 +1,7 @@
 package com.mania.game.Screens;
 
 import com.badlogic.gdx.Screen;
+import com.mania.game.Constants;
 import com.mania.game.Mania;
 
 /**
@@ -13,6 +14,8 @@ public class GameOverScreen implements Screen {
     public GameOverScreen(Mania game, PlayScreen pS){
         this.game = game;
         this.pS = pS;
+
+        this.game.cam.setToOrtho(false, Constants.WIDTH/2, Constants.HEIGHT/2);
     }
 
     @Override

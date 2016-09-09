@@ -1,6 +1,7 @@
 package com.mania.game.Screens;
 
 import com.badlogic.gdx.Screen;
+import com.mania.game.Constants;
 import com.mania.game.Mania;
 
 /**
@@ -12,6 +13,8 @@ public class SplashScreen implements Screen {
 
     public SplashScreen(Mania game){
         this.game = game;
+
+        this.game.cam.setToOrtho(false, Constants.WIDTH/2, Constants.HEIGHT/2);
     }
 
 
