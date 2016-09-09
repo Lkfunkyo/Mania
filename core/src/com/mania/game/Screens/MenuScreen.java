@@ -1,5 +1,6 @@
 package com.mania.game.Screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -28,11 +29,12 @@ public class MenuScreen implements Screen {
 
     @Override
     public void show() {
-
+        stage = new Stage();
+        skin = new Skin(Gdx.files.internal("Menu/menu.json"),atlas);
     }
 
     public void createButtons(){
-        startButton = new TextButton("",skin);
+        startButton = new TextButton("",skin, "blueButton");
 
         startButton.addListener( new ClickListener(){
             @Override
