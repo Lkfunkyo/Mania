@@ -50,27 +50,36 @@ public class MenuScreen implements Screen {
             }
         });
 
-        startButton = new TextButton("",skin);
+        achievementButton = new TextButton("",skin);
 
-        startButton.addListener( new ClickListener(){
+        achievementButton.addListener( new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
             }
         });
 
-        startButton = new TextButton("",skin);
+        rateButton = new TextButton("",skin);
 
-        startButton.addListener( new ClickListener(){
+        rateButton.addListener( new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
             }
         });
 
-        startButton = new TextButton("",skin);
+        shareButton = new TextButton("",skin);
 
-        startButton.addListener( new ClickListener(){
+        shareButton.addListener( new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+
+            }
+        });
+
+        socialMediaButton = new TextButton("",skin);
+
+        socialMediaButton.addListener( new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
