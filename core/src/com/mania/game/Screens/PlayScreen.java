@@ -25,7 +25,6 @@ public class PlayScreen implements Screen {
         Gdx.gl.glClear(0);
 
         game.batch.begin();
-        game.batch.draw(game.img, 0, 0);
         game.batch.end();
     }
 

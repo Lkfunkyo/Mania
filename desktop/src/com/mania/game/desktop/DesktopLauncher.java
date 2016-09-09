@@ -8,8 +8,8 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
-		config.width = Mania.WIDTH;
-		config.height = Mania.HEIGHT;
+		config.width = 1280;
+		config.height = 720;
 		config.resizable = false;
 
 		new LwjglApplication(new Mania(), config);

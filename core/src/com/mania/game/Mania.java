@@ -10,31 +10,17 @@ import com.mania.game.Screens.PlayScreen;
 import com.mania.game.Screens.SplashScreen;
 
 public class Mania extends Game {
-	public static final int WIDTH = 480;
-	public static final int HEIGHT = 800;
 
-	public Texture img;
 	public SpriteBatch batch;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-
 		setScreen(new SplashScreen(this));
-	}
-
-	public Mania() {
-		super();
-	}
-
-	public void render(){
-		super.render();
 	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 	}
 }
