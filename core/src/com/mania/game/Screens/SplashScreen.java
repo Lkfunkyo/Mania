@@ -1,6 +1,8 @@
 package com.mania.game.Screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.mania.game.Constants;
 import com.mania.game.Mania;
 
@@ -21,10 +23,19 @@ public class SplashScreen implements Screen {
     @Override
     public void show() {
 
+        game.assets.load();
     }
 
     @Override
     public void render(float delta) {
+        Gdx.gl.glClearColor(0,1,0,1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        game.batch.setProjectionMatrix(game.cam.combined);
+        game.batch.begin();
+        game.batch.end();
+        if(game.assets.assetManager.update()){
+            game.setScreen(new MenuScreen(game));
+        }
     }
 
     @Override
