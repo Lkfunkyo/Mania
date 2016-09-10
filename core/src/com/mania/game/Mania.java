@@ -1,3 +1,10 @@
+/*
+	*Make all measurements fit the orthographic camera instead of the Constants.WIDTH && Constants.HEIGHT for example:
+	Body.stayInScreen(), or Body.outOfScreen()
+
+	*Check for other occurrences of the Constant class dimensions being used instead of the cam dimensions
+ */
+
 package com.mania.game;
 
 import com.badlogic.gdx.Game;
@@ -19,7 +26,7 @@ public class Mania extends Game {
 		assets = new Assets();
 		batch = new SpriteBatch();
 		cam = new OrthographicCamera();
-		
+
 		setScreen(new SplashScreen(this));
 	}
 	
