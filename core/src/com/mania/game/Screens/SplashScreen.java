@@ -27,7 +27,6 @@ public class SplashScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
     }
 
     @Override
