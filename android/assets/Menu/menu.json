@@ -1,12 +1,11 @@
 {
   "com.badlogic.gdx.graphics.g2d.BitmapFont":{
-    "font": {"file": "Menu/font.fnt"}
+    "font": {"file": "Menu/Fonts/font.fnt"}
 
 },
   "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle":{
 
-    "greenButton": {"up": "greenButtonUp", "down": "greenButtonDown", "pressedOffsetX": 1, "pressedOffsetY": -1, "font": "font"},
-    "blueButton": {"up": "blueButtonUp", "down": "blueButtonDown", "pressedOffsetX": 1, "pressedOffsetY": -1, "font": "font"}
+    "button": {"up": "buttonUp", "down": "buttonDown", "pressedOffsetX": 0, "pressedOffsetY": 0, "font": "font"}
 
   }
 }

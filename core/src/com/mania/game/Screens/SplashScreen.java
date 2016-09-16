@@ -15,7 +15,6 @@ public class SplashScreen implements Screen {
 
     public SplashScreen(Mania game){
         this.game = game;
-
         this.game.cam.setToOrtho(false, Constants.WIDTH/2, Constants.HEIGHT/2);
     }
 
