@@ -9,9 +9,12 @@ package com.mania.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.actions.TemporalAction;
 import com.mania.game.Screens.Assets;
 import com.mania.game.Screens.MenuScreen;
+import com.mania.game.Screens.PlayScreen;
 import com.mania.game.Screens.SplashScreen;
 
 public class Mania extends Game {
@@ -20,6 +23,7 @@ public class Mania extends Game {
 
 	public SpriteBatch batch;
 	public Assets assets;
+	public Texture body;
 
 	@Override
 	public void create () {
@@ -27,12 +31,15 @@ public class Mania extends Game {
 		batch = new SpriteBatch();
 		cam = new OrthographicCamera();
 
-		setScreen(new SplashScreen(this));
+		body = new Texture("badlogic.jpg");
+
+		setScreen(new PlayScreen(this));
 	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
+		body.dispose();
 		assets.dispose();
 	}
 }
