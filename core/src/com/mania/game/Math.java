@@ -17,5 +17,16 @@ public class Math {
         }
     }
 
+    public static float map(float value, float min1, float max1, float newMin, float newMax){
+        float ans;
 
+        float dist1 = max1-min1;
+        float dist2 = newMax-newMax;
+
+        float ratio = value/dist1;
+
+        ans = newMin + dist2*ratio;
+
+        return ans;
+    }
 }

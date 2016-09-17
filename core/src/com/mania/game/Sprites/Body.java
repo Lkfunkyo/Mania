@@ -1,5 +1,7 @@
 package com.mania.game.Sprites;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
@@ -10,25 +12,28 @@ import com.mania.game.Math;
  * Created by PC on 9/9/2016.
  */
 public class Body {
-    private Vector3 pos;
-    private Vector3 vel;
-    private Vector3 accel;
+    public Vector3 pos;
+    public Vector3 vel;
+    public Vector3 accel;
 
-    private float size;
+    private float scale;
 
     private float w, h;
 
     public int type;
+    private OrthographicCamera cam;
 
     private Texture img;
 
-    public Body(Vector3 pos, float size, Texture img){
+    public Body(Vector3 pos, float scale, Texture img, OrthographicCamera cam){
         this.pos = pos;
         this.vel = new Vector3(0, 0, 0);
         this.accel = new Vector3(0, 0, 0);
 
-        this.size = size;
+        this.scale = scale;
         this.img = img;
+
+        this.cam = cam;
 
         this.w = img.getWidth();
         this.h = img.getHeight();
@@ -43,7 +48,7 @@ public class Body {
     }
 
     public void display(SpriteBatch batch){
-        batch.draw(this.img, this.pos.x-this.w/2-this.size, this.pos.y-this.h/2-this.size, this.pos.x-this.w/2+this.size, this.pos.y-this.h/2+this.size);
+        batch.draw(this.img, this.pos.x-this.w*this.scale/2, this.pos.y-this.h*this.scale/2, this.pos.x+this.w*this.scale/2, this.pos.y+this.h*this.scale/2);
     }
 
     public void run(){
@@ -56,7 +61,7 @@ public class Body {
     }
 
     public boolean outOfScreen(){
-        if(this.pos.x > Constants.WIDTH + this.w/2 || this.pos.x < -this.w/2 || this.pos.y > Constants.HEIGHT + this.h/2 || this.pos.y < -this.h/2){
+        if(this.pos.x > cam.viewportWidth + this.w*this.scale/2 || this.pos.x < -this.w*this.scale/2 || this.pos.y > cam.viewportHeight + this.h*this.scale/2 || this.pos.y < -this.h*this.scale/2){
             return true;
         } else{
             return false;
@@ -64,17 +69,17 @@ public class Body {
     }
 
     public void stayInScreen(){
-        if(this.pos.x > Constants.WIDTH - this.w/2 || this.pos.x < this.w/2){
+        if(this.pos.x > cam.viewportWidth - this.w*this.scale/2 || this.pos.x < this.w*this.scale/2){
             this.vel.x *= -1;
         }
 
-        if(this.pos.y > Constants.HEIGHT - this.h/2 || this.pos.y < this.h/2){
+        if(this.pos.y > cam.viewportHeight - this.h*this.scale/2 || this.pos.y < this.h*this.scale/2){
             this.vel.y *= -1;
         }
 
 
 
-        this.pos = new Vector3(Math.constrain(this.pos.x, 0, Constants.WIDTH), Math.constrain(this.pos.y, 0, Constants.HEIGHT), 0);
+        this.pos = new Vector3(Math.constrain(this.pos.x, (int) (this.w*this.scale/2), (int) (cam.viewportWidth - this.w*this.scale/2)), Math.constrain(this.pos.y, (int) (this.h*this.scale/2), (int) (cam.viewportHeight - this.h*this.scale/2)), 0);
     }
 
     public void applyForce(Vector3 force){
@@ -83,10 +88,11 @@ public class Body {
 
     public Vector3 forceList(int num){
         switch(num){
-            case 0: return this.runStraight();
-            case 1: return this.runCircle();
-            case 2: return this.runWave();
-            case 3: return this.runBackAndForth();
+            case 0: return new Vector3(0, 0, 0);
+            case 1: return this.runStraight();
+            case 2: return this.runCircle();
+            case 3: return this.runWave();
+            case 4: return this.runBackAndForth();
 
             default: return new Vector3(0, 0, 0);
         }
@@ -100,21 +106,21 @@ public class Body {
     }
 
     public Vector3 runCircle(){
-        Vector3 force = new Vector3(0, 0, 0);
+        Vector3 force = new Vector3(-1, 0, 0);
         force.nor();
 
         return force;
     }
 
     public Vector3 runWave(){
-        Vector3 force = new Vector3(1, 0, 0);
+        Vector3 force = new Vector3(1, 1, 0);
         force.nor();
 
         return force;
     }
 
     public Vector3 runBackAndForth(){
-        Vector3 force = new Vector3(1, 0, 0);
+        Vector3 force = new Vector3(1, -1, 0);
         force.nor();
 
         return force;
