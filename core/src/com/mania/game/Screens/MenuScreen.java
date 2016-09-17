@@ -13,7 +13,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mania.game.Constants;
 import com.mania.game.Handlers.Assets;
+import com.mania.game.Handlers.SpriteAccessor;
 import com.mania.game.Mania;
+
+import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenManager;
 
 /**
  * Created by Registered User on 9/8/2016.
@@ -21,7 +25,7 @@ import com.mania.game.Mania;
 public class MenuScreen implements Screen {
     private Mania game;
 
-    public MenuScreen(Mania game){
+    public MenuScreen(Mania game) {
         this.game = game;
     }
 
@@ -29,40 +33,44 @@ public class MenuScreen implements Screen {
     private Stage stage;
     private Skin skin;
     private TextButton startButton, leaderBoardButton, rateButton, shareButton;
-    private Sprite title;
+    private Sprite title, background;
+    private TweenManager manager;
 
 
     @Override
     public void show() {
         stage = new Stage();
         atlas = game.assets.assetManager.get(Assets.menuAtlas);
-        skin = new Skin(Gdx.files.internal("Menu/menu.json"),atlas);
+        skin = new Skin(Gdx.files.internal("Menu/menu.json"), atlas);
+        manager = new TweenManager();
+        Tween.registerAccessor(Sprite.class, new SpriteAccessor());
+        background = new Sprite((Texture) game.assets.assetManager.get(Assets.menuBackground));
+        background.setBounds(0, 0, game.cam.viewportWidth, game.cam.viewportHeight);
         title = new Sprite((Texture) game.assets.assetManager.get(Assets.Title));
-
-        title.setSize(game.cam.viewportWidth*.6f, game.cam.viewportHeight * .2f);
-        title.setPosition(game.cam.viewportWidth/2 - title.getWidth()/2, game.cam.viewportHeight*.7f);
         createButtons();
 
         stage.addActor(startButton);
         stage.addActor(leaderBoardButton);
         stage.addActor(rateButton);
-
+        Tween.set(background, SpriteAccessor.COLOR).target(0,0,0).start(manager);
+        Tween.to(background, SpriteAccessor.COLOR, 5).target(1,1,1).repeatYoyo(-1, 1).start(manager);
         Gdx.input.setInputProcessor(stage);
     }
 
 
-
-
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0,0,0,0);
+        Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        manager.update(delta);
         stage.act(delta);
-        stage.draw();
         game.batch.setProjectionMatrix(game.cam.combined);
         game.batch.begin();
-        title.draw(game.batch);
+        background.draw(game.batch);
+        game.batch.draw(title, game.cam.viewportWidth / 2 -  game.cam.viewportWidth * .63f/ 2, game.cam.viewportHeight * .7f, game.cam.viewportWidth * .63f, game.cam.viewportHeight * .23f);
         game.batch.end();
+        stage.draw();
+        System.out.println(background.getColor().b);
 
 
     }
@@ -91,22 +99,24 @@ public class MenuScreen implements Screen {
     public void dispose() {
 
     }
-    public void createButtons(){
-        startButton = new TextButton("",skin, "button");
-        startButton.setSize(Constants.WIDTH*.4f, Constants.HEIGHT*.14f);
-        startButton.setPosition(Constants.WIDTH/2 - startButton.getWidth()/2,Constants.HEIGHT*.45f);
 
-        startButton.addListener( new ClickListener(){
+    public void createButtons() {
+        startButton = new TextButton("", skin, "button");
+        startButton.setSize(Constants.WIDTH * .3f, Constants.HEIGHT * .14f);
+        startButton.setPosition(Constants.WIDTH / 2 - startButton.getWidth() / 2, Constants.HEIGHT * .40f);
+
+        startButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                Gdx.input.setInputProcessor(null);
                 game.setScreen(new PlayScreen(game));
             }
         });
 
-        leaderBoardButton = new TextButton("",skin, "button");
-        leaderBoardButton.setSize(Constants.WIDTH*.4f, Constants.HEIGHT*.14f);
-        leaderBoardButton.setPosition(Constants.WIDTH/2 - leaderBoardButton.getWidth()/2,Constants.HEIGHT*.30f);
-        leaderBoardButton.addListener( new ClickListener(){
+        leaderBoardButton = new TextButton("", skin, "button");
+        leaderBoardButton.setSize(Constants.WIDTH * .3f, Constants.HEIGHT * .14f);
+        leaderBoardButton.setPosition(Constants.WIDTH * .18f, Constants.HEIGHT * .20f);
+        leaderBoardButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
@@ -114,10 +124,10 @@ public class MenuScreen implements Screen {
         });
 
 
-        rateButton = new TextButton("",skin, "button");
-        rateButton.setSize(Constants.WIDTH*.4f, Constants.HEIGHT*.14f);
-        rateButton.setPosition(Constants.WIDTH/2 - rateButton.getWidth()/2,Constants.HEIGHT*.15f);
-        rateButton.addListener( new ClickListener(){
+        rateButton = new TextButton("", skin, "button");
+        rateButton.setSize(Constants.WIDTH * .3f, Constants.HEIGHT * .14f);
+        rateButton.setPosition(Constants.WIDTH * .52f, Constants.HEIGHT * .20f);
+        rateButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
