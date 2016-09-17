@@ -29,7 +29,9 @@ public class PlayScreen implements Screen {
 
         this.random = new Random();
 
-        this.bodies.add(new Body(new Vector3(game.cam.viewportWidth/2, game.cam.viewportHeight/2, 0), (float) 0.5, game.body, game.cam));
+        for(int i = 0; i < 10; i++){
+            this.bodies.add(new Body(new Vector3(this.random.nextInt((int) game.cam.viewportWidth), this.random.nextInt((int) game.cam.viewportHeight), 0), (float) 1, game.body, game.cam));
+        }
 
         for(Body body: this.bodies){
             //body.type = random.nextInt(4);
@@ -43,12 +45,12 @@ public class PlayScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 0);
+        Gdx.gl.glClearColor(Math.map(0, 0, 255, 0, 1), Math.map(200, 0, 255, 0, 1), Math.map(240, 0, 255, 0, 1), 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
         for(Body body: this.bodies){
-            mouse = new Vector3(Math.map((float) Gdx.input.getX(), (float) 0, (float) Constants.WIDTH, (float) 0, (float) game.cam.viewportWidth), Math.map((float) Gdx.input.getY(), (float) 0, (float) Constants.HEIGHT, (float) 0, (float) game.cam.viewportHeight), 0);
+            mouse = new Vector3((float) Gdx.input.getX(), (float) (game.cam.viewportHeight-Gdx.input.getY()), (float) 0);
             mouse.sub(body.pos);
             mouse.nor();
 

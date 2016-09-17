@@ -21,7 +21,7 @@ public class Math {
         float ans;
 
         float dist1 = max1-min1;
-        float dist2 = newMax-newMax;
+        float dist2 = newMax-newMin;
 
         float ratio = value/dist1;
 
