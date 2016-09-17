@@ -27,7 +27,7 @@ public class Mania extends Game {
 		assets = new Assets();
 		batch = new SpriteBatch();
 		cam = new OrthographicCamera();
-		cam.setToOrtho(false, Constants.WIDTH, Constants.HEIGHT);
+		cam.setToOrtho(false, 1280, 720);
 		
 
 		body = new Texture("badlogic.jpg");
