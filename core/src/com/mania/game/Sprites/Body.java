@@ -48,7 +48,7 @@ public class Body {
     }
 
     public void display(SpriteBatch batch){
-        batch.draw(this.img, this.pos.x-this.w*this.scale/2, this.pos.y-this.h*this.scale/2, this.pos.x+this.w*this.scale/2, this.pos.y+this.h*this.scale/2);
+        batch.draw(this.img, this.pos.x-this.w*this.scale/2, this.pos.y-this.h*this.scale/2, this.w*this.scale, this.h*this.scale);
     }
 
     public void run(){
@@ -70,11 +70,11 @@ public class Body {
 
     public void stayInScreen(){
         if(this.pos.x > cam.viewportWidth - this.w*this.scale/2 || this.pos.x < this.w*this.scale/2){
-            this.vel.x *= -1;
+            this.vel.x *= -0.8;
         }
 
         if(this.pos.y > cam.viewportHeight - this.h*this.scale/2 || this.pos.y < this.h*this.scale/2){
-            this.vel.y *= -1;
+            this.vel.y *= -0.8;
         }
 
 
