@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mania.game.Screens.PlayScreen;
 import com.mania.game.Handlers.Assets;
+import com.mania.game.Screens.SplashScreen;
 
 public class Mania extends Game {
 
@@ -32,7 +33,7 @@ public class Mania extends Game {
 
 		body = new Texture("badlogic.jpg");
 
-		setScreen(new PlayScreen(this));
+		setScreen(new SplashScreen(this));
 	}
 	
 	@Override

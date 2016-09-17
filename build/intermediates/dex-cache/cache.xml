@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Registered User\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.9.4\4b4b7962d1bc75af0438f5c81ec1010557bc9ee5\gdx-1.9.4.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="4b4b7962d1bc75af0438f5c81ec1010557bc9ee5">
+        <dex dex="E:\Android Projects\Mania\Mania\android\build\intermediates\transforms\dex\debug\folders\1000\10\gdx-1.9.4_9d5c6e109688c52e35afb021d94a4379c244ec75\classes.dex" />
+    </item>
+    <item
+        jar="E:\Android Projects\Mania\Mania\android\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="dbd51a8483c244042963233be0d0a5aa7aa1bc6c">
+        <dex dex="E:\Android Projects\Mania\Mania\android\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_142de4a97493693615a86911018776c9de9714db\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Registered User\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-box2d\1.9.4\98a0d25c9f0637fecac6e4aacf7287aa635964f5\gdx-box2d-1.9.4.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="98a0d25c9f0637fecac6e4aacf7287aa635964f5">
+        <dex dex="E:\Android Projects\Mania\Mania\android\build\intermediates\transforms\dex\debug\folders\1000\10\gdx-box2d-1.9.4_ad2e669fa2c112ba65f1c1ccc69fe011589e7505\classes.dex" />
+    </item>
+    <item
+        jar="E:\Android Projects\Mania\Mania\android\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="2038d653ed0c05c3e1db0e3e6c3c7f9051c8567d">
+        <dex dex="E:\Android Projects\Mania\Mania\android\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_3dc4121b3568d1bb9b670002a6ea6898bcb18068\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Registered User\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.9.4\194b33382d6d58fad031521ba3331d926c476c9b\gdx-backend-android-1.9.4.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="194b33382d6d58fad031521ba3331d926c476c9b">
+        <dex dex="E:\Android Projects\Mania\Mania\android\build\intermediates\transforms\dex\debug\folders\1000\10\gdx-backend-android-1.9.4_5bf44e64a22535a8456ffd64a7dd6cf313faff17\classes.dex" />
+    </item>
+
+</items>
