@@ -29,7 +29,7 @@ public class PlayScreen implements Screen {
 
         this.random = new Random();
 
-        this.bodies.add(new Body(new Vector3(game.cam.viewportWidth/2, game.cam.viewportHeight/2, 0), (float) 0.0125, game.body, game.cam));
+        this.bodies.add(new Body(new Vector3(game.cam.viewportWidth/2, game.cam.viewportHeight/2, 0), (float) 0.5, game.body, game.cam));
 
         for(Body body: this.bodies){
             //body.type = random.nextInt(4);
@@ -62,9 +62,9 @@ public class PlayScreen implements Screen {
                 this.bodies.remove(body);
             }
         }
-
-        game.batch.begin();
         game.batch.setProjectionMatrix(game.cam.combined);
+        game.batch.begin();
+
 
         for(Body body: this.bodies){
             body.display(game.batch);

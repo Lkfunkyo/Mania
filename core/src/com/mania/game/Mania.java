@@ -11,11 +11,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.actions.TemporalAction;
-import com.mania.game.Screens.Assets;
-import com.mania.game.Screens.MenuScreen;
 import com.mania.game.Screens.PlayScreen;
-import com.mania.game.Screens.SplashScreen;
+import com.mania.game.Handlers.Assets;
 
 public class Mania extends Game {
 
@@ -30,6 +27,8 @@ public class Mania extends Game {
 		assets = new Assets();
 		batch = new SpriteBatch();
 		cam = new OrthographicCamera();
+		cam.setToOrtho(false, Constants.WIDTH, Constants.HEIGHT);
+		
 
 		body = new Texture("badlogic.jpg");
 

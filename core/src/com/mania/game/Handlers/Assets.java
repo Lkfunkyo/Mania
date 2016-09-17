@@ -1,7 +1,8 @@
-package com.mania.game.Screens;
+package com.mania.game.Handlers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 /**
@@ -9,10 +10,12 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
  */
 public class Assets {
     public AssetManager assetManager = new AssetManager();
-
+    public final static String Title = "Title/title.png",
+    menuAtlas = "Menu/Atlas/menu.atlas";
 
     public void load(){
-        assetManager.load("Menu/menu.atlas", TextureAtlas.class);
+        assetManager.load(menuAtlas, TextureAtlas.class);
+        assetManager.load(Title, Texture.class);
     }
 
     public void dispose(){

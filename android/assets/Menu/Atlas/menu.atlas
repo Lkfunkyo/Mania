@@ -1,0 +1,21 @@
+
+menu.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+buttonDown
+  rotate: false
+  xy: 1, 1
+  size: 500, 500
+  split: 79, 77, 69, 88
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+buttonUp
+  rotate: false
+  xy: 503, 1
+  size: 500, 500
+  split: 66, 62, 74, 97
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
