@@ -29,12 +29,13 @@ public class PlayScreen implements Screen {
 
         this.random = new Random();
 
-        for(int i = 0; i < 10; i++){
-            this.bodies.add(new Body(new Vector3(this.random.nextInt((int) game.cam.viewportWidth), this.random.nextInt((int) game.cam.viewportHeight), 0), (float) this.random.nextFloat(), game.body, game.cam));
+        for(int i = 0; i < 100; i++){
+            this.bodies.add(new Body(new Vector3(this.random.nextInt((int) game.cam.viewportWidth), this.random.nextInt((int) game.cam.viewportHeight), this.random.nextInt(Constants.DEPTH)), game.body, game.cam));
         }
 
         for(Body body: this.bodies){
-            //body.type = random.nextInt(4);
+            //body.setType(random.nextInt(4));
+            body.setMaxDepth(Constants.DEPTH-5);
         }
     }
 
@@ -50,9 +51,10 @@ public class PlayScreen implements Screen {
 
 
         for(Body body: this.bodies){
-            mouse = new Vector3((float) Gdx.input.getX(), (float) (game.cam.viewportHeight-Gdx.input.getY()), (float) 0);
-            mouse.sub(body.pos);
+            mouse = new Vector3((float) Gdx.input.getX(), (float) (game.cam.viewportHeight-Gdx.input.getY()), (float) (Constants.DEPTH*0.85));
+            mouse.sub(body.pos.x, body.pos.y, body.pos.z);
             mouse.nor();
+            mouse.z /= 5;
 
             body.applyForce(mouse);
             body.vel.limit(15);

@@ -18,25 +18,25 @@ public class Body {
 
     private float scale;
 
-    private float w, h;
+    private float w, h, d;
 
     public int type;
     private OrthographicCamera cam;
 
     private Texture img;
 
-    public Body(Vector3 pos, float scale, Texture img, OrthographicCamera cam){
+    public Body(Vector3 pos, Texture img, OrthographicCamera cam){
         this.pos = pos;
         this.vel = new Vector3(0, 0, 0);
         this.accel = new Vector3(0, 0, 0);
 
-        this.scale = scale;
         this.img = img;
 
         this.cam = cam;
 
         this.w = img.getWidth();
         this.h = img.getHeight();
+        this.d = 200;
 
         this.type = 0;
 
@@ -45,6 +45,11 @@ public class Body {
 
     public void setType(int type){
         this.type = type;
+        System.out.println(this.type);
+    }
+
+    public void setMaxDepth(int depth){
+        this.d = Constants.DEPTH-depth;
     }
 
     public void display(SpriteBatch batch){
@@ -58,6 +63,10 @@ public class Body {
         this.accel.scl(0);
 
         this.applyForce(this.forceList(this.type));
+
+        this.scale = Math.map(this.pos.z, 0, Constants.DEPTH, 1, 0);
+
+
     }
 
     public boolean outOfScreen(){
@@ -77,9 +86,13 @@ public class Body {
             this.vel.y *= -0.8;
         }
 
+        if(this.pos.z > Constants.DEPTH-this.d || this.pos.z < this.d){
+            this.vel.z *= -0.8;
+        }
 
 
-        this.pos = new Vector3(Math.constrain(this.pos.x, (int) (this.w*this.scale/2), (int) (cam.viewportWidth - this.w*this.scale/2)), Math.constrain(this.pos.y, (int) (this.h*this.scale/2), (int) (cam.viewportHeight - this.h*this.scale/2)), 0);
+
+        this.pos = new Vector3(Math.constrain(this.pos.x, (int) (this.w*this.scale/2), (int) (cam.viewportWidth - this.w*this.scale/2)), Math.constrain(this.pos.y, (int) (this.h*this.scale/2), (int) (cam.viewportHeight - this.h*this.scale/2)), Math.constrain(this.pos.z, (int) (this.d*this.scale/2), (int) (Constants.DEPTH-this.d)) );
     }
 
     public void applyForce(Vector3 force){
