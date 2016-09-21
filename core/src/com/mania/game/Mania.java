@@ -15,7 +15,7 @@ public class Mania extends Game {
 
 	public SpriteBatch batch;
 	public Assets assets;
-	public Texture body;
+	public Texture target, projectile;
 
 	@Override
 	public void create () {
@@ -25,7 +25,8 @@ public class Mania extends Game {
 		cam.setToOrtho(false, 1280, 720);
 		
 
-		body = new Texture("body.png");
+		target = new Texture("target.png");
+		projectile = new Texture("bullet.png");
 
 		setScreen(new SplashScreen(this));
 	}
@@ -33,7 +34,7 @@ public class Mania extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		body.dispose();
+		target.dispose();
 		assets.dispose();
 	}
 }
