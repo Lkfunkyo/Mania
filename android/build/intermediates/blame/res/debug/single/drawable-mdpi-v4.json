@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\PC\\Documents\\Android\\Android-workspace\\Mania\\android\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\PC\\Documents\\Android\\Android-workspace\\Mania\\android\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
         "merged": "E:\\Android Projects\\Mania\\Mania\\android\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
         "source": "E:\\Android Projects\\Mania\\Mania\\android\\res\\drawable-mdpi\\ic_launcher.png"
     }

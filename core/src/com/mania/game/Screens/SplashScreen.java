@@ -13,6 +13,7 @@ public class SplashScreen implements Screen {
 
     private Mania game;
 
+
     public SplashScreen(Mania game){
         this.game = game;
         this.game.cam.setToOrtho(false, Constants.WIDTH/2, Constants.HEIGHT/2);
@@ -32,6 +33,8 @@ public class SplashScreen implements Screen {
         game.batch.setProjectionMatrix(game.cam.combined);
         game.batch.begin();
         game.batch.end();
+
+
         if(game.assets.assetManager.update()){
             game.setScreen(new MenuScreen(game));
         }

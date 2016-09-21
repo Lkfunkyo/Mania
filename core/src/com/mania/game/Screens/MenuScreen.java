@@ -70,7 +70,6 @@ public class MenuScreen implements Screen {
         game.batch.draw(title, game.cam.viewportWidth / 2 -  game.cam.viewportWidth * .63f/ 2, game.cam.viewportHeight * .7f, game.cam.viewportWidth * .63f, game.cam.viewportHeight * .23f);
         game.batch.end();
         stage.draw();
-        System.out.println(background.getColor().b);
 
 
     }

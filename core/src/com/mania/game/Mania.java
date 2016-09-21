@@ -1,9 +1,3 @@
-/*
-	*Make all measurements fit the orthographic camera instead of the Constants.WIDTH && Constants.HEIGHT for example:
-	Body.stayInScreen(), or Body.outOfScreen()
-
-	*Check for other occurrences of the Constant class dimensions being used instead of the cam dimensions
- */
 
 package com.mania.game;
 
@@ -21,7 +15,7 @@ public class Mania extends Game {
 
 	public SpriteBatch batch;
 	public Assets assets;
-	public Texture body;
+	public Texture target, projectile;
 
 	@Override
 	public void create () {
@@ -31,7 +25,8 @@ public class Mania extends Game {
 		cam.setToOrtho(false, 1280, 720);
 		
 
-		body = new Texture("badlogic.jpg");
+		target = new Texture("target.png");
+		projectile = new Texture("bullet.png");
 
 		setScreen(new SplashScreen(this));
 	}
@@ -39,7 +34,7 @@ public class Mania extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		body.dispose();
+		target.dispose();
 		assets.dispose();
 	}
 }
