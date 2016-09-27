@@ -46,7 +46,7 @@ public class PlayScreen implements Screen {
         }
 
         for(Target target: this.targets){
-            target.setType(random.nextInt(4));
+            //target.setType(random.nextInt(4));
             target.setMaxDepth(Constants.DEPTH-5);
         }
 
@@ -60,12 +60,12 @@ public class PlayScreen implements Screen {
 
 
         for(Target target: this.targets){
-//            mouse = new Vector3((float) Gdx.input.getX(), (float) (game.cam.viewportHeight-Gdx.input.getY()), (float) (Constants.DEPTH*0.85));
-//            mouse.sub(target.pos.x, target.pos.y, target.pos.z);
-//            mouse.nor();
-//            mouse.z /= 5;
-//
-//            target.applyForce(mouse);
+            mouse = new Vector3((float) Gdx.input.getX(), (float) (game.cam.viewportHeight-Gdx.input.getY()), (float) (Constants.DEPTH*0.50));
+            mouse.sub(target.pos.x, target.pos.y, target.pos.z);
+            mouse.nor();
+            mouse.z /= 5;
+
+            target.applyForce(mouse);
             target.vel.limit(15);
 
             target.run();
