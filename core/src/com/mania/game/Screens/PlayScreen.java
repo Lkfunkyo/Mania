@@ -19,6 +19,7 @@ import java.util.Random;
 public class PlayScreen implements Screen {
     public Mania game;
 
+    public int r, g, b;
 
     public ArrayList<Target> targets;
     public Projectile projectile;
@@ -34,6 +35,11 @@ public class PlayScreen implements Screen {
 
     @Override
     public void show() {
+        r = 0;
+        g = 220;
+        b = 240;
+
+
         this.game.cam.setToOrtho(false, Constants.WIDTH, Constants.HEIGHT);
         this.targets = new ArrayList<Target>();
 
@@ -41,8 +47,9 @@ public class PlayScreen implements Screen {
 
         projectile = new Projectile(new Vector3(), game.projectile, game.cam);
 
-        for(int i = 0; i < 100; i++){
-            this.targets.add(new Target(new Vector3(this.random.nextInt((int) game.cam.viewportWidth), this.random.nextInt((int) game.cam.viewportHeight), this.random.nextInt(Constants.DEPTH)), game.target, game.cam));
+        for(int i = 0; i < 1; i++){
+            //this.targets.add(new Target(new Vector3(this.random.nextInt((int) game.cam.viewportWidth), this.random.nextInt((int) game.cam.viewportHeight), this.random.nextInt(Constants.DEPTH)), game.target, game.cam));
+            this.targets.add(new Target(new Vector3(game.cam.viewportWidth/2, game.cam.viewportHeight/2, Constants.DEPTH/2), game.target, game.cam));
         }
 
         for(Target target: this.targets){
@@ -55,7 +62,7 @@ public class PlayScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(Math.map(0, 0, 255, 0, 1), Math.map(200, 0, 255, 0, 1), Math.map(240, 0, 255, 0, 1), 1);
+        Gdx.gl.glClearColor(Math.map(r, 0, 255, 0, 1), Math.map(g, 0, 255, 0, 1), Math.map(b, 0, 255, 0, 1), 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
@@ -65,7 +72,7 @@ public class PlayScreen implements Screen {
             mouse.nor();
             mouse.z /= 5;
 
-            target.applyForce(mouse);
+            //target.applyForce(mouse);
             target.vel.limit(15);
 
             target.run();
@@ -75,7 +82,12 @@ public class PlayScreen implements Screen {
                 this.targets.remove(target);
             }
 
-
+            if(target.isHit(projectile)) {
+                b = 0;
+                projectile.toggle = false;
+            } else {
+                b = 240;
+            }
         }
 
         if(Gdx.input.justTouched()){

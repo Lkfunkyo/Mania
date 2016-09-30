@@ -1,3 +1,5 @@
+//fix collision detection between projectile and target class (located in the target class: isHit())
+
 
 package com.mania.game;
 

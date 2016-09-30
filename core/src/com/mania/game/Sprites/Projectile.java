@@ -15,6 +15,7 @@ public class Projectile {
     public Vector3 vel;
     public Vector3 accel;
 
+    public boolean toggle;
     private float scale;
 
     private float w, h, d;
@@ -29,6 +30,7 @@ public class Projectile {
         this.vel = new Vector3(0, 0, 0);
         this.accel = new Vector3(0, 0, 0);
 
+        this.toggle = true;
         this.img = img;
 
         this.cam = cam;
@@ -56,13 +58,15 @@ public class Projectile {
     }
 
     public void run() {
-        this.vel.add(this.accel);
-        this.pos.add(this.vel);
+        if(this.toggle) {
 
-        this.accel.scl(0);
+            this.vel.add(this.accel);
+            this.pos.add(this.vel);
 
-        this.scale = Math.map(this.pos.z, 0, Constants.DEPTH, 1, 0);
+            this.accel.scl(0);
 
+            this.scale = Math.map(this.pos.z, 0, Constants.DEPTH, 1, 0);
+        }
 
     }
 

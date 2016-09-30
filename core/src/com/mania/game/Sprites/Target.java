@@ -52,6 +52,14 @@ public class Target {
         //System.out.println(this.type);
     }
 
+    public boolean isHit(Projectile b){
+        if(b.pos.x > this.pos.x - this.w*this.scale/2 && b.pos.x < this.pos.x + this.w*this.scale/2 && b.pos.y > this.pos.y - this.h*this.scale/2 && b.pos.y < this.pos.y + this.h*this.scale/2 && b.pos.z > this.pos.z){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void setMaxDepth(int depth){
         this.d = Constants.DEPTH-depth;
     }
