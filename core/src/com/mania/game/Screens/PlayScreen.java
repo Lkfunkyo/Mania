@@ -22,7 +22,7 @@ public class PlayScreen implements Screen {
     public int r, g, b;
 
     public ArrayList<Target> targets;
-    public Projectile projectile;
+    public ArrayList<Projectile> projectiles;
 
     public boolean pSwitch;
 
@@ -41,15 +41,16 @@ public class PlayScreen implements Screen {
 
 
         this.game.cam.setToOrtho(false, Constants.WIDTH, Constants.HEIGHT);
+
+
         this.targets = new ArrayList<Target>();
+        this.projectiles = new ArrayList<Projectile>();
 
         this.random = new Random();
 
-        projectile = new Projectile(new Vector3(), game.projectile, game.cam);
-
-        for(int i = 0; i < 1; i++){
-            //this.targets.add(new Target(new Vector3(this.random.nextInt((int) game.cam.viewportWidth), this.random.nextInt((int) game.cam.viewportHeight), this.random.nextInt(Constants.DEPTH)), game.target, game.cam));
-            this.targets.add(new Target(new Vector3(game.cam.viewportWidth/2, game.cam.viewportHeight/2, Constants.DEPTH/2), game.target, game.cam));
+        for(int i = 0; i < 15; i++){
+            this.targets.add(new Target(new Vector3(this.random.nextInt((int) game.cam.viewportWidth), this.random.nextInt((int) game.cam.viewportHeight), this.random.nextInt(Constants.DEPTH)), game.target, game.cam));
+            //this.targets.add(new Target(new Vector3(game.cam.viewportWidth/2, game.cam.viewportHeight/2, Constants.DEPTH/2), game.target, game.cam));
         }
 
         for(Target target: this.targets){
@@ -62,9 +63,13 @@ public class PlayScreen implements Screen {
 
     @Override
     public void render(float delta) {
+
+
+
         Gdx.gl.glClearColor(Math.map(r, 0, 255, 0, 1), Math.map(g, 0, 255, 0, 1), Math.map(b, 0, 255, 0, 1), 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
+        b = 240;
+        //projectile.vel.limit(3);
 
         for(Target target: this.targets){
             mouse = new Vector3((float) Gdx.input.getX(), (float) (game.cam.viewportHeight-Gdx.input.getY()), (float) (Constants.DEPTH*0.50));
@@ -82,18 +87,19 @@ public class PlayScreen implements Screen {
                 this.targets.remove(target);
             }
 
-            if(target.isHit(projectile)) {
-                b = 0;
-                projectile.toggle = false;
-            } else {
-                b = 240;
+
+            for(Projectile projectile: this.projectiles) {
+                if (target.isHit(projectile)) {
+                    b = 240;
+                    b = 0;
+
+                }
             }
         }
 
         if(Gdx.input.justTouched()){
-            projectile = new Projectile(new Vector3(Gdx.input.getX(), game.cam.viewportHeight-Gdx.input.getY(), 0), game.projectile, game.cam);
+            projectiles.add(new Projectile(mouse.cpy(), game.projectile, game.cam));
 
-            pSwitch = true;
         }
 
         game.batch.setProjectionMatrix(game.cam.combined);
@@ -104,9 +110,8 @@ public class PlayScreen implements Screen {
             target.display(game.batch);
         }
 
-        if(pSwitch && projectile.outOfScreen() == false){
+        for(Projectile projectile: this.projectiles){
             projectile.display(game.batch);
-            projectile.launch();
         }
 
         game.batch.end();

@@ -20,7 +20,7 @@ public class Target {
 
     private float scale;
 
-    private float w, h, d;
+    public float w, h, d;
 
     public int type;
     private OrthographicCamera cam;
@@ -53,7 +53,7 @@ public class Target {
     }
 
     public boolean isHit(Projectile b){
-        if(b.pos.x > this.pos.x - this.w*this.scale/2 && b.pos.x < this.pos.x + this.w*this.scale/2 && b.pos.y > this.pos.y - this.h*this.scale/2 && b.pos.y < this.pos.y + this.h*this.scale/2 && b.pos.z > this.pos.z){
+        if(b.pos.x+b.w/2 > this.pos.x-this.w/2 && b.pos.x-b.w/2 < this.pos.x+this.w/2 && b.pos.y+b.h/2 > this.pos.y-this.h/2 && b.pos.y-b.h/2 < this.pos.y+this.h/2 && b.pos.z > this.pos.z-b.vel.z && b.pos.z < this.pos.z){
             return true;
         } else {
             return false;
@@ -65,7 +65,7 @@ public class Target {
     }
 
     public void display(SpriteBatch batch){
-        batch.draw(this.img, this.pos.x-this.w*this.scale/2, this.pos.y-this.h*this.scale/2, this.w*this.scale, this.h*this.scale);
+        batch.draw(this.img, this.pos.x - this.w/2, this.pos.y - this.h/2, this.w, this.h);
     }
 
     public void run() {
@@ -77,10 +77,13 @@ public class Target {
         this.applyForce(this.forceList(this.type));
 
         this.scale = Math.map(this.pos.z, 0, Constants.DEPTH, 1, 0);
+
+        this.w = this.img.getWidth()*this.scale;
+        this.h = this.img.getHeight()*this.scale;
     }
 
     public boolean outOfScreen(){
-        if(this.pos.x > cam.viewportWidth + this.w * this.scale / 2 || this.pos.x < -this.w * this.scale / 2 || this.pos.y > cam.viewportHeight + this.h * this.scale / 2 || this.pos.y < -this.h * this.scale / 2 || this.pos.z < 0 || this.pos.z > Constants.DEPTH-this.d){
+        if(this.pos.x > cam.viewportWidth + this.w/2 || this.pos.x < -this.w/2 || this.pos.y > cam.viewportHeight + this.h/2 || this.pos.y < -this.h/2 || this.pos.z < 0 || this.pos.z > Constants.DEPTH-this.d){
             return true;
         } else{
             return false;
@@ -88,11 +91,11 @@ public class Target {
     }
 
     public void stayInScreen(){
-        if(this.pos.x > cam.viewportWidth - this.w*this.scale/2 || this.pos.x < this.w*this.scale/2){
+        if(this.pos.x > cam.viewportWidth - this.w/2 || this.pos.x < this.w/2){
             this.vel.x *= -0.8;
         }
 
-        if(this.pos.y > cam.viewportHeight - this.h*this.scale/2 || this.pos.y < this.h*this.scale/2){
+        if(this.pos.y > cam.viewportHeight - this.h/2 || this.pos.y < this.h/2){
             this.vel.y *= -0.8;
         }
 
@@ -102,7 +105,7 @@ public class Target {
 
 
 
-        this.pos = new Vector3(Math.constrain(this.pos.x, (int) (this.w*this.scale/2), (int) (cam.viewportWidth - this.w*this.scale/2)), Math.constrain(this.pos.y, (int) (this.h*this.scale/2), (int) (cam.viewportHeight - this.h*this.scale/2)), Math.constrain(this.pos.z, (int) (this.d*this.scale/2), (int) (Constants.DEPTH-this.d)) );
+        this.pos = new Vector3(Math.constrain(this.pos.x, (int) (this.w/2), (int) (cam.viewportWidth - this.w/2)), Math.constrain(this.pos.y, (int) (this.h/2), (int) (cam.viewportHeight - this.h/2)), Math.constrain(this.pos.z, (int) (this.d/2), (int) (Constants.DEPTH-this.d/2)) );
     }
 
     public void applyForce(Vector3 force){
