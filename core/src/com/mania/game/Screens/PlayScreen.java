@@ -49,7 +49,7 @@ public class PlayScreen implements Screen {
         this.random = new Random();
 
         for(int i = 0; i < 15; i++){
-            this.targets.add(new Target(new Vector3(this.random.nextInt((int) game.cam.viewportWidth), this.random.nextInt((int) game.cam.viewportHeight), this.random.nextInt(Constants.DEPTH)), game.target, game.cam));
+            this.targets.add(new Target(new Vector3(this.random.nextInt((int) game.cam.viewportWidth), this.random.nextInt((int) game.cam.viewportHeight)+game.cam.viewportHeight/4, this.random.nextInt(Constants.DEPTH)), game.target, game.cam));
             //this.targets.add(new Target(new Vector3(game.cam.viewportWidth/2, game.cam.viewportHeight/2, Constants.DEPTH/2), game.target, game.cam));
         }
 
@@ -82,15 +82,14 @@ public class PlayScreen implements Screen {
 
             target.run();
             target.stayInScreen();
+            targetOut(target, targets.indexOf(target));
+        }
 
-            if(target.outOfScreen()){
-                this.targets.remove(target);
-            }
-
-
+        for(int i = targets.size()-1; i >= 0; i--){
             for(Projectile projectile: this.projectiles) {
-                if (target.isHit(projectile)) {
+                if (targets.get(i).isHit(projectile)) {
                     b = 240;
+                    targets.remove(i);
                     b = 0;
 
                 }
@@ -98,8 +97,7 @@ public class PlayScreen implements Screen {
         }
 
         if(Gdx.input.justTouched()){
-            projectiles.add(new Projectile(mouse.cpy(), game.projectile, game.cam));
-
+            projectiles.add(new Projectile(new Vector3(Gdx.input.getX(), game.cam.viewportHeight-Gdx.input.getY(), 0), game.projectile, game.cam));
         }
 
         game.batch.setProjectionMatrix(game.cam.combined);
@@ -111,10 +109,37 @@ public class PlayScreen implements Screen {
         }
 
         for(Projectile projectile: this.projectiles){
-            projectile.display(game.batch);
+            if(projectile.outOfScreen() == false) {
+                projectile.display(game.batch);
+                projectile.launch();
+            } else {
+
+            }
         }
 
+
+
+            for (int i = projectiles.size()-1; i > 0; i--) {
+                if (projectiles.get(i).outOfScreen()) {
+                    projectiles.remove(i);
+                }
+            }
+
         game.batch.end();
+    }
+
+    public void targetOut(Target t, int index){
+        for(int i = 0; i < t.outOfScreen().size(); i++){
+            if(t.outOfScreen().get(i) == "x"){
+
+            }
+            if(t.outOfScreen().get(i) == "y"){
+                targets.remove(index);
+            }
+            if(t.outOfScreen().get(i) == "z"){
+
+            }
+        }
     }
 
     @Override

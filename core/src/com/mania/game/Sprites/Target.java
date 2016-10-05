@@ -82,12 +82,20 @@ public class Target {
         this.h = this.img.getHeight()*this.scale;
     }
 
-    public boolean outOfScreen(){
-        if(this.pos.x > cam.viewportWidth + this.w/2 || this.pos.x < -this.w/2 || this.pos.y > cam.viewportHeight + this.h/2 || this.pos.y < -this.h/2 || this.pos.z < 0 || this.pos.z > Constants.DEPTH-this.d){
-            return true;
-        } else{
-            return false;
+    public ArrayList<String> outOfScreen(){
+        ArrayList<String> list = new ArrayList<String>();
+
+        if(this.pos.x > cam.viewportWidth + this.w/2 || this.pos.x < -this.w/2){
+            list.add("x");
         }
+        if(this.pos.y > cam.viewportHeight + this.h/2 || this.pos.y < -this.h/2){
+            list.add("y");
+        }
+        if(this.pos.z < 0 || this.pos.z > Constants.DEPTH-this.d){
+            list.add("z");
+        }
+
+        return list;
     }
 
     public void stayInScreen(){

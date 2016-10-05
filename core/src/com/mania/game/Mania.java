@@ -1,6 +1,8 @@
 //Have to arrange bodies by z-value. Further objects get shown behind closer ones
 // consider adding bodyHandler class?
 
+//Make targetDestroyed animation
+
 package com.mania.game;
 
 import com.badlogic.gdx.Game;
