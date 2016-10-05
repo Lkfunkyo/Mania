@@ -26,10 +26,10 @@ public class Mania extends Game {
 		assets = new Assets();
 		batch = new SpriteBatch();
 		cam = new OrthographicCamera();
-		cam.setToOrtho(false, 1280, 720);
+		cam.setToOrtho(false, Constants.WIDTH, Constants.HEIGHT);
 		
 
-		target = new Texture("target.png");
+		target = new Texture("bluetarget.png");
 		projectile = new Texture("bullet.png");
 
 		setScreen(new SplashScreen(this));

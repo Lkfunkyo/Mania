@@ -8,5 +8,7 @@ import com.badlogic.gdx.Gdx;
 public class Constants {
     public static final int WIDTH = Gdx.graphics.getWidth();
     public static final int HEIGHT = Gdx.graphics.getHeight();
+    public static final int HALFHEIGHT = HEIGHT/2;
+    public static final int HALFWIDTH = WIDTH/2;
     public static final int DEPTH = 1000;
 }
