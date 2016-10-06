@@ -1,50 +1,5 @@
 [
     {
-        "outputFile": "C:\\Users\\PC\\Documents\\Android\\Android-workspace\\Mania\\android\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 42,
-                    "endOffset": 93
-                },
-                "from": {
-                    "file": "C:\\Users\\PC\\Documents\\Android\\Android-workspace\\Mania\\android\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 59,
-                        "endColumn": 42,
-                        "endOffset": 97
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 98,
-                    "endLine": 10,
-                    "endColumn": 12,
-                    "endOffset": 556
-                },
-                "from": {
-                    "file": "C:\\Users\\PC\\Documents\\Android\\Android-workspace\\Mania\\android\\res\\values\\styles.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 19,
-                        "endLine": 9,
-                        "endColumn": 12,
-                        "endOffset": 484
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "E:\\Android Projects\\Mania\\Mania\\android\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
         "map": [
             {

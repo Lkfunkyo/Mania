@@ -32,6 +32,7 @@ public class MenuScreen implements Screen {
     private Skin skin;
     private TextButton startButton, leaderBoardButton, rateButton;
     private Sprite title, background;
+    private Texture playIcon;
     private TweenManager manager;
 
     @Override
@@ -43,6 +44,8 @@ public class MenuScreen implements Screen {
         title = new Sprite((Texture) game.assets.assetManager.get(Assets.Title));
         background = new Sprite((Texture) game.assets.assetManager.get(Assets.menuBackground));
         background.setBounds(0, 0, game.cam.viewportWidth, game.cam.viewportHeight);
+
+        playIcon = game.assets.assetManager.get(Assets.playIcon);
 
         createButtons();
         setupTween();
@@ -63,9 +66,14 @@ public class MenuScreen implements Screen {
         game.batch.begin();
         background.draw(game.batch);
         game.batch.draw(title, game.cam.viewportWidth / 2 - game.cam.viewportWidth * .63f / 2,
-                game.cam.viewportHeight * .7f, game.cam.viewportWidth * .63f, game.cam.viewportHeight * .23f);
+                game.cam.viewportHeight * .63f, game.cam.viewportWidth * .63f, game.cam.viewportHeight * .35f);
         game.batch.end();
         stage.draw();
+        game.batch.begin();
+        game.batch.draw(playIcon, game.cam.viewportWidth / 2 - game.cam.viewportWidth * .07f/2 , game.cam.viewportHeight *.425f, game.cam.viewportWidth * .07f, game.cam.viewportHeight * .1f);
+        game.batch.end();
+        System.out.println(game.cam.viewportWidth + "   " + Constants.WIDTH);
+
 
     }
 
@@ -102,7 +110,7 @@ public class MenuScreen implements Screen {
 
     public void createButtons() {
         startButton = new TextButton("", skin, "button");
-        startButton.setSize(Constants.WIDTH * .3f, Constants.HEIGHT * .14f);
+        startButton.setSize(Constants.WIDTH * .25f, Constants.HEIGHT * .14f);
         startButton.setPosition(Constants.WIDTH / 2 - startButton.getWidth() / 2, Constants.HEIGHT * .40f);
 
         startButton.addListener(new ClickListener() {
@@ -114,8 +122,8 @@ public class MenuScreen implements Screen {
         });
 
         leaderBoardButton = new TextButton("", skin, "button");
-        leaderBoardButton.setSize(Constants.WIDTH * .3f, Constants.HEIGHT * .14f);
-        leaderBoardButton.setPosition(Constants.WIDTH * .18f, Constants.HEIGHT * .20f);
+        leaderBoardButton.setSize(Constants.WIDTH * .25f, Constants.HEIGHT * .14f);
+        leaderBoardButton.setPosition(Constants.WIDTH * .45f - leaderBoardButton.getWidth(), Constants.HEIGHT * .2f);
         leaderBoardButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -125,8 +133,8 @@ public class MenuScreen implements Screen {
 
 
         rateButton = new TextButton("", skin, "button");
-        rateButton.setSize(Constants.WIDTH * .3f, Constants.HEIGHT * .14f);
-        rateButton.setPosition(Constants.WIDTH * .52f, Constants.HEIGHT * .20f);
+        rateButton.setSize(Constants.WIDTH * .25f, Constants.HEIGHT * .14f);
+        rateButton.setPosition(Constants.WIDTH * .55f, Constants.HEIGHT * .20f);
         rateButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {

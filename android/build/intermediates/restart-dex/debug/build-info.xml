@@ -4,12 +4,12 @@
     api-level="23"
     density="xxhdpi"
     format="7"
-    timestamp="275420732964561"
+    timestamp="514645499246273"
     token="-6053344255175410007" >
 
     <task
         name="javac"
-        duration="36" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
@@ -20,6 +20,65 @@
         name="verifier"
         duration="0" />
 
-    <build timestamp="275420732964561" />
+    <artifact
+        location="E:\Android Projects\Mania\Mania\android\build\intermediates\res\resources-debug.ap_"
+        type="RESOURCES" />
+    <artifact
+        location="E:\Android Projects\Mania\Mania\android\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
+        type="DEX" />
+
+    <build timestamp="512255261031045" >
+        <artifact
+            location="E:\Android Projects\Mania\Mania\android\build\outputs\apk\android-debug.apk"
+            type="MAIN" />
+    </build>
+    <build timestamp="512281998592380" >
+        <artifact
+            location="E:\Android Projects\Mania\Mania\android\build\intermediates\transforms\dex\debug\folders\1000\5\slice_3\classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="512453729346072"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="E:\Android Projects\Mania\Mania\android\build\intermediates\builds\debug\512453729346072\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="512471233606719"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="E:\Android Projects\Mania\Mania\android\build\intermediates\builds\debug\512471233606719\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="512494873557741"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="E:\Android Projects\Mania\Mania\android\build\intermediates\builds\debug\512494873557741\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="512503259208231"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="E:\Android Projects\Mania\Mania\android\build\intermediates\builds\debug\512503259208231\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="512519878551277"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="E:\Android Projects\Mania\Mania\android\build\intermediates\builds\debug\512519878551277\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build timestamp="514645499246273" >
+        <artifact
+            location="E:\Android Projects\Mania\Mania\android\build\intermediates\res\resources-debug.ap_"
+            type="RESOURCES" />
+        <artifact
+            location="E:\Android Projects\Mania\Mania\android\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
+            type="DEX" />
+    </build>
 
 </instant-run>
