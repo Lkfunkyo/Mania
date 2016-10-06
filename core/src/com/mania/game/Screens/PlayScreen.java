@@ -48,9 +48,10 @@ public class PlayScreen implements Screen {
 
         this.random = new Random();
 
-        for(int i = 0; i < 15; i++){
+        for(int i = 0; i < 150; i++){
             this.targets.add(new Target(new Vector3(this.random.nextInt((int) game.cam.viewportWidth), this.random.nextInt((int) game.cam.viewportHeight)+game.cam.viewportHeight/4, this.random.nextInt(Constants.DEPTH)), game.target, game.cam));
             //this.targets.add(new Target(new Vector3(game.cam.viewportWidth/2, game.cam.viewportHeight/2, Constants.DEPTH/2), game.target, game.cam));
+
         }
 
         for(Target target: this.targets){
