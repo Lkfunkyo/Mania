@@ -6,12 +6,12 @@
 package com.mania.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mania.game.Screens.PlayScreen;
-import com.mania.game.Handlers.Assets;
 import com.mania.game.Screens.SplashScreen;
+import com.mania.game.Handlers.Assets;
 
 public class Mania extends Game {
 
@@ -29,8 +29,8 @@ public class Mania extends Game {
 		cam.setToOrtho(false, Constants.WIDTH, Constants.HEIGHT);
 		
 
-		target = new Texture("bluetarget.png");
-		projectile = new Texture("bullet.png");
+		target = new Texture(Gdx.files.internal("bluetarget.png"));
+		projectile = new Texture(Gdx.files.internal("bullet.png"));
 
 		setScreen(new SplashScreen(this));
 	}
